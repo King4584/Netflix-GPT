@@ -2,14 +2,19 @@ import React from "react";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
+import {  createUserWithEmailAndPassword,signInWithEmailAndPassword  } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [captcha, setCaptcha] = useState(false);
   const [errorMsg,setErrorMsg]=useState(null);
+  const [LogedInMsg,setLogedInMsg]=useState(null);
   const email = useRef(null);
   const password = useRef(null);
-  const name = useRef(null);
+  const navigate = useNavigate();
+  // const name = useRef(null);
 
   const userSignUp = () => {
     setIsLogedIn(!isLogedIn);
@@ -20,8 +25,49 @@ const Login = () => {
   };
 
   const handleBtnClick = () => {
-    const result = checkValidData(email.current.value, password.current.value,name.current.value);
+    const result = checkValidData(email.current.value, password.current.value,{/*,name.current.value*/});
     setErrorMsg(result);
+    if (result) return;
+    
+    //this means that email and password is valid
+    if (isLogedIn){
+      //sign up logic
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/browse");
+        setLogedInMsg("You have successfully Registred to the website...!!!");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMsg(errorCode+ "-" + errorMessage)
+        // ..
+      });
+    }
+    else {
+      //sign in logic 
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/browse");
+        setLogedInMsg("You have successfully Signed In to the website...!!!")
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMsg(errorCode+ "-" + errorMessage)
+      });
+
+    }
+    
+
   };
 
   return (
@@ -44,7 +90,7 @@ const Login = () => {
         </div>
         {isLogedIn && (
           <input
-            ref={name}
+            // ref={name}
             type="text"
             placeholder="Full Name"
             className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
@@ -63,6 +109,7 @@ const Login = () => {
           className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
         />
         <p className="text-red-500 p-0 mx-14 text-bold">{errorMsg}</p>
+        <p className="text-green-500 p-0 mx-14 text-bold">{LogedInMsg}</p>
         <button
           onClick={handleBtnClick}
           className="rounded-lg p-2 mx-14 my-3 bg-red-600 w-8/12"
