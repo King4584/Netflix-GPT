@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from './Header'
 
-const Login = () => {
+const Browse = () => {
   return (
     <div>
         <Header/>
-        Login
+      Browse
     </div>
   )
 }
 
-export default Login
+export default Browse
