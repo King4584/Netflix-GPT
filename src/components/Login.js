@@ -2,9 +2,11 @@ import React from "react";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
-import {  createUserWithEmailAndPassword,signInWithEmailAndPassword  } from "firebase/auth";
+import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
@@ -14,7 +16,8 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const navigate = useNavigate();
-  // const name = useRef(null);
+  const name = useRef(null);
+  const dispatch=useDispatch();
 
   const userSignUp = () => {
     setIsLogedIn(!isLogedIn);
@@ -36,6 +39,24 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+          dispatch(
+            addUser({
+              uid: uid,
+              email: email,
+              displayName: displayName,
+              photoURL: photoURL,
+            })
+          );
+          }).catch((error) => {
+            // An error occurred
+            // ...
+            setErrorMsg(error.message);
+          });
         console.log(user);
         navigate("/browse");
         setLogedInMsg("You have successfully Registred to the website...!!!");
@@ -90,7 +111,7 @@ const Login = () => {
         </div>
         {isLogedIn && (
           <input
-            // ref={name}
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
