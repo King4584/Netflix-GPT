@@ -6,6 +6,7 @@ import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_Avatar } from "../utils/constants";
 
 const Login = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
@@ -36,9 +37,10 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
       .then((userCredential) => {
         // Signed up 
-        const user = userCredential.user;
+        // const user = userCredential.user;
         updateProfile(auth.currentUser, {
-            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+            displayName: name.current.value, 
+            photoURL: USER_Avatar
           }).then(() => {
             // Profile updated!
             const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -68,7 +70,7 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
       .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
+        // const user = userCredential.user;
         // console.log(user);
         setLogedInMsg("You have successfully Signed In to the website...!!!")
         // ...
