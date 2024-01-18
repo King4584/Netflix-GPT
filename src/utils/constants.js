@@ -11,3 +11,5 @@ export const API_Options = {
   };
 
 export const Video_URL = "https://youtu.be/pDak4qLyF4Q?si=lWfU-Bw3FCNKVWQs";
+
+export const MovieImg_URL = "https://image.tmdb.org/t/p/w500/";
