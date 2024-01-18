@@ -9,3 +9,5 @@ export const API_Options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjYzZDgyMGM1YjZmYzgwZTRkOTE0YjA5NzhhZTRiMiIsInN1YiI6IjY1YTkzYmQ4NmY5NzQ2MDEzNGQ5MGMxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EXmSYkjke4N4eFdMCVtcNxPHN6-LYrQPb8-kokTMAoI'
     }
   };
+
+export const Video_URL = "https://youtu.be/pDak4qLyF4Q?si=lWfU-Bw3FCNKVWQs";
