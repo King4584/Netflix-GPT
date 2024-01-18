@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
 import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -15,7 +14,6 @@ const Login = () => {
   const [LogedInMsg,setLogedInMsg]=useState(null);
   const email = useRef(null);
   const password = useRef(null);
-  const navigate = useNavigate();
   const name = useRef(null);
   const dispatch=useDispatch();
 
@@ -53,13 +51,9 @@ const Login = () => {
             })
           );
           }).catch((error) => {
-            // An error occurred
-            // ...
             setErrorMsg(error.message);
           });
-        console.log(user);
-        navigate("/browse");
-        setLogedInMsg("You have successfully Registred to the website...!!!");
+        //console.log(user);
         // ...
       })
       .catch((error) => {
@@ -75,8 +69,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user);
-        navigate("/browse");
+        // console.log(user);
         setLogedInMsg("You have successfully Signed In to the website...!!!")
         // ...
       })
