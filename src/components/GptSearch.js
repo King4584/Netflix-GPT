@@ -10,12 +10,12 @@ const GptSearch = () => {
       <div className="absolute -z-10 w-screen">
         <img src={BG_URL} alt="background-img" />
       </div>
-      <form className="pt-40 mx-2 grid-cols-12 ">
+      <form className="mt-40 bg-black mx-2 grid-cols-12 ">
         <input
-          className="bg-gray-600 text-white mx-2 grid-cols-9 p-2 w-80 rounded-lg "
+          className="bg-gray-600 text-white mx-2 p-2 w-80 rounded-lg "
           placeholder={lang[langKey].placeholder}
         />
-        <button className="bg-red-600 text-white grid-cols-3 p-2 m-2 rounded-lg">
+        <button className="bg-red-600 text-white p-2 m-2 rounded-lg">
           {lang[langKey].search}
         </button>   
       </form>
