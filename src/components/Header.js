@@ -81,10 +81,10 @@ const Header = () => {
               className=" m-2 p-2 bg-purple-600 text-white rounded-lg"
               onClick={handleGptSearchClick}
             >
-              {!lang ? "GPT Search" : "Home Page"}
+              {!lang ? "GPT Search" : "Homepage"}
             </button>
             <button className="m-2 p-2 cursor-default text-white rounded-lg">
-              Hyy {user?.displayName}{" "}
+              Hyy {user?.displayName.split(' ')[0]+' !'}
             </button>
             <button
               onClick={handleSignOut}

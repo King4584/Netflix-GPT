@@ -3,6 +3,7 @@ export const LOGO =
 
 export const USER_Avatar = "https://example.com/jane-q-user/profile.jpg";
 
+export const GPT_ApiKey= "";
 export const API_Options = {
   method: "GET",
   headers: {
