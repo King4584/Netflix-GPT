@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live deployment of Web Server
 
-you can [click Here](https://netflix-gpt1.netlify.app/browse).
+You can [Click Here](https://netflix-gpt1.netlify.app/browse).
+Click on Back to our site after clicking the above link.
 
 ## Available Scripts
 
