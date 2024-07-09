@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live deployment of Web Server
+
+you can [click Here](https://netflix-gpt1.netlify.app/browse).
+
 ## Available Scripts
 
 In the project directory, you can run:
