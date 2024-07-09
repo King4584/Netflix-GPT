@@ -1,28 +1,27 @@
-import  { useEffect } from 'react'
-import { API_Options } from '../utils/constants';
-// import { addTrailerVideo } from '../utils/movieSlice';
-// import { useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { API_Options } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addTrailerVideo } from "../utils/movieSlice";
 
-const useMovieTrailer = ({movieID}) => {
-//   const dispatch = useDispatch();
-  
+const useMovieTrailer = (movieID) => {
+  const dispatch = useDispatch();
 
   const getMovieTrailer = async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/tv/"+movieID+"/videos?",
+      "https://api.themoviedb.org/3/movie/" + movieID + "/videos?language=en-US",
       API_Options
-    ); 
+    );
     const json = await data.json();
-    // console.log(json);
+    console.log(json);
 
-    //  const filteredData = json.results.filter((video) => video?.type === "Trailer");
-    // const trailer = filteredData.length ? filteredData[0] : json.result[0];
+    // const filterData = json.results.filter((video) => video.type === "Trailer");
+    // const trailer = filterData.length ? filterData[0] : json.results[0];
     // dispatch(addTrailerVideo(trailer));
-    // console.log(trailer);
+    // console.log("ytuyjitv    ",trailer);
   };
   useEffect(() => {
     getMovieTrailer();
   }, []);
-}
+};
 
 export default useMovieTrailer;

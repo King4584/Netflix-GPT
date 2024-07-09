@@ -99,71 +99,79 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="absolute ">
-        <img src={BG_URL} alt="background-img" />
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-        className="rounded-lg absolute w-4/12 my-36 pb-6 mx-auto right-0 left-0 bg-opacity-75  bg-black text-white"
-      >
-        <div className="mt-8 mx-8 my-3  text-3xl">
-          {!isLogedIn ? "Sign In" : "Sign Up"}
-        </div>
-        {isLogedIn && (
-          <input
-            ref={name}
-            type="text"
-            placeholder="Full Name"
-            className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
+      <div className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0">
+          <img
+            src={BG_URL}
+            alt="background-img"
+            className="w-full h-full object-cover"
           />
-        )}
-        <input
-          ref={email}
-          type="email"
-          placeholder="Email or Phone number"
-          className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
-        />
-        <input
-          ref={password}
-          type="password"
-          placeholder="Password"
-          className="rounded-lg p-2 mx-14 my-3 w-8/12 bg-gray-600"
-        />
-        <p className="text-red-500 p-0 mx-14 text-bold">{errorMsg}</p>
-        <p className="text-green-500 p-0 mx-14 text-bold">{LogedInMsg}</p>
-        <button
-          onClick={handleBtnClick}
-          className="rounded-lg p-2 mx-14 my-3 bg-red-600 w-8/12"
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="relative rounded-lg w-11/12 max-w-md mx-auto p-6 bg-opacity-75 bg-black text-white md:w-4/12 md:p-8 lg:w-3/12"
         >
-          {!isLogedIn ? "Sign In" : "Sign Up"}{" "}
-        </button>
-        <h3 className="mx-5 mt-2 p-2 cursor-pointer" onClick={userSignUp}>
-          {" "}
-          {!isLogedIn
-            ? "New to Netflix? Sign Up Now"
-            : "Already a User ! Sign In Now"}{" "}
-        </h3>
-        <h6 className="mx-5 mt-2 p-2 w-10/12 ">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
-          <span onClick={captchaPage} className="text-blue-600 cursor-pointer">
-            Learn more.
-          </span>
-        </h6>
-        {captcha && (
-          <h6 className="mx-5 p-2 w-12/12 ">
-            The information collected by Google reCAPTCHA is subject to the
-            Google Privacy Policy and Terms of Service, and is used for
-            providing, maintaining, and improving the reCAPTCHA service and for
-            general security purposes (it is not used for personalised
-            advertising by Google).
+          <div className="text-center text-3xl">
+            {!isLogedIn ? "Sign In" : "Sign Up"}
+          </div>
+          {isLogedIn && (
+            <input
+              ref={name}
+              type="text"
+              placeholder="Full Name"
+              className="rounded-lg p-2 my-3 w-full bg-gray-600"
+            />
+          )}
+          <input
+            ref={email}
+            type="email"
+            placeholder="Email or Phone number"
+            className="rounded-lg p-2 my-3 w-full bg-gray-600"
+          />
+          <input
+            ref={password}
+            type="password"
+            placeholder="Password"
+            className="rounded-lg p-2 my-3 w-full bg-gray-600"
+          />
+          <p className="text-red-500">{errorMsg}</p>
+          <p className="text-green-500">{LogedInMsg}</p>
+          <button
+            onClick={handleBtnClick}
+            className="rounded-lg p-2 my-3 bg-red-600 w-full"
+          >
+            {!isLogedIn ? "Sign In" : "Sign Up"}{" "}
+          </button>
+          <h3 className="text-center cursor-pointer" onClick={userSignUp}>
+            {" "}
+            {!isLogedIn
+              ? "New to Netflix? Sign Up Now"
+              : "Already a User ! Sign In Now"}{" "}
+          </h3>
+          <h6 className="text-center mt-2">
+            This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
+            <span onClick={captchaPage} className="text-blue-600 cursor-pointer">
+              Learn more.
+            </span>
           </h6>
-        )}
-      </form>
-    </div>
+          {captcha && (
+            <h6 className="text-center mt-2">
+              The information collected by Google reCAPTCHA is subject to the
+              Google Privacy Policy and Terms of Service, and is used for
+              providing, maintaining, and improving the reCAPTCHA service and for
+              general security purposes (it is not used for personalised
+              advertising by Google).
+            </h6>
+          )}
+        </form>
+      </div>
+    </>
+
   );
 };
 

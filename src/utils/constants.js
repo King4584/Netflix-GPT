@@ -1,10 +1,19 @@
 export const LOGO =
-  "https://imgs.search.brave.com/ZBbMMUhTlxq8zjlbHNC86k8dpzfNuKb9-zoA7QKevbE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzBjL05ldGZsaXhf/MjAxNF9sb2dvLnN2/Zw.svg";
+  "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
 export const USER_Avatar = "https://example.com/jane-q-user/profile.jpg";
 
-export const GPT_ApiKey= "";
+export const GPT_ApiKey= "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";
 export const API_Options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjYzZDgyMGM1YjZmYzgwZTRkOTE0YjA5NzhhZTRiMiIsInN1YiI6IjY1YTkzYmQ4NmY5NzQ2MDEzNGQ5MGMxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EXmSYkjke4N4eFdMCVtcNxPHN6-LYrQPb8-kokTMAoI",
+  },
+};
+
+export const API_OPTIONS={
   method: "GET",
   headers: {
     accept: "application/json",
@@ -25,3 +34,4 @@ export const Supported_lang = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" }
 ];
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

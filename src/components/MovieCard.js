@@ -5,7 +5,7 @@ const MovieCard = ({poster_path}) => {
     // console.log(MovieImg_URL+poster_path)
 
   return (
-    <div className='w-48 pr-4'>
+    <div className='w-48 md:w-48 pr-4'>
       <img alt="movie card" src={MovieImg_URL+poster_path}/>
     </div>
   )
