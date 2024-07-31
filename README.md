@@ -7,7 +7,7 @@
 
 **Welcome to NetflixGPT 👋**
 
-**NetflixGPT** is a web application that leverages the power of OpenAI's GPT-3 to enhance your Netflix experience. With this project, you can generate personalized movie and TV show recommendations based on your preferences, engage in natural language conversations to discover new content, and get detailed information about your favorite shows and movies.
+**NetflixGPT** is a web application that leverages the power of OpenAI's GPT-3 to enhance your Netflix experience. With this project, you can generate personalized movie and TV show recommendations based on your preferences, engage in natural language conversations to discover new content, and get detailed information about your favorite shows and movies. (Click Here for Live Demo)[https://beamish-seahorse-b34424.netlify.app]
 
 ## **Technologies Used**
 
